@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .jumbotron {
+        padding-top: 1px !important;
+        padding-bottom: 10px !important;
+    }
+</style>
+
+<div class="jumbotron">
+    <h3>Search here</h3>
+    <div class="form-group">
+        <label for="txtName">EmployeeName:</label>
+        <input type="text" class="form-control" id="txtName"  placeholder="Enter email" name="txtName">
+    </div>
+    <div class="form-group">
+        <label for="txtAddress">EmployeeAddress:</label>
+        <input type="text" class="form-control" id="txtAddress" placeholder="Enter password" name="txtAddress">
+    </div>
+    <div class="form-group">
+        <label for="txtNumber">EmployeeMobileNumber:</label>
+        <input type="text" class="form-control" id="txtNumber" placeholder="Enter password" name="txtNumber">
+    </div>
+    <button type="button" id="btnSearch" class="btn btn-default">Search</button>
+</div>
+
+<div class="jumbotron">
+    <h3>Find here</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="tbyData">
+            <tr>
+                <td style="text-align:center" colspan="3">No data found</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
