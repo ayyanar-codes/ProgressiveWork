@@ -1,0 +1,56 @@
+USE [ProgreesiveWork]
+GO
+/****** Object:  Table [dbo].[Employees]    Script Date: 07/12/2022 7:43:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Employees](
+	[EmployeeID] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeName] [nvarchar](255) NULL,
+	[EmployeeAddress] [nvarchar](500) NULL,
+	[EmployeePhoneNumber] [nvarchar](15) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[EmployeeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Employees] ON 
+GO
+INSERT [dbo].[Employees] ([EmployeeID], [EmployeeName], [EmployeeAddress], [EmployeePhoneNumber]) VALUES (1, N'Herpert Samuel', N'Velachery', N'1234567890')
+GO
+INSERT [dbo].[Employees] ([EmployeeID], [EmployeeName], [EmployeeAddress], [EmployeePhoneNumber]) VALUES (2, N'Hubert Immanuel', N'Texaz', N'9876543210')
+GO
+INSERT [dbo].[Employees] ([EmployeeID], [EmployeeName], [EmployeeAddress], [EmployeePhoneNumber]) VALUES (3, N'Jobin Roy', N'Chennai', N'5869471230')
+GO
+INSERT [dbo].[Employees] ([EmployeeID], [EmployeeName], [EmployeeAddress], [EmployeePhoneNumber]) VALUES (4, N'Regu ram', N'Delhi', N'5864471230')
+GO
+INSERT [dbo].[Employees] ([EmployeeID], [EmployeeName], [EmployeeAddress], [EmployeePhoneNumber]) VALUES (5, N'Raja rajan', N'AZ', N'9952331005')
+GO
+SET IDENTITY_INSERT [dbo].[Employees] OFF
+GO
+ALTER TABLE [dbo].[Employees] ADD  DEFAULT ('') FOR [EmployeeName]
+GO
+ALTER TABLE [dbo].[Employees] ADD  DEFAULT ('') FOR [EmployeeAddress]
+GO
+ALTER TABLE [dbo].[Employees] ADD  DEFAULT ('') FOR [EmployeePhoneNumber]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_getEmployees]    Script Date: 07/12/2022 7:43:13 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_getEmployees]
+@EmployeeName nvarchar(255)='zzz',
+@EmployeeAddress nvarchar(500)='zzz',
+@EmployeePhoneNumber nvarchar(15)='zzz'
+AS
+BEGIN 
+Select *from Employees
+Where 
+EmployeeName like ('%'+@EmployeeName+'%') or 
+EmployeeAddress like ('%'+@EmployeeAddress+'%') or 
+EmployeePhoneNumber like ('%'+@EmployeePhoneNumber+'%')
+END
+GO
